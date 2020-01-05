@@ -1,0 +1,20 @@
+Instalación de Ionic.
+
+Abra un cmd y ejecute el siguiente comando para la instalación de Ionic de manera global:
+
+	npm install -g ionic
+
+Creación de la aplicación.
+
+Cree la carpeta APPIONICANGULARREDUXFIREBASEDBCONTACTOS, luego en un cmd vaya a esta carpeta y ejecute el siguiente comando para
+crear un proyecto vacio.
+
+	ionic start appionicangularreduxfirebasedbcontactos --type angular blank
+
+	Nota: appionicangularreduxfirebasedbcontactos es el nombre del proyecto y con --type se especifica el framework js con el que trabajara,
+	al momento se ofrecen angular y react
+
+
+
+
+
