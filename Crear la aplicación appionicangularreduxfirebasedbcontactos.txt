@@ -4,6 +4,18 @@ Abra un cmd y ejecute el siguiente comando para la instalación de Ionic de mane
 
 	npm install -g ionic
 
+Revisar la versión instalada de ionic:
+
+	ionic -v
+
+Instalación de Cordova.
+
+Abra un cmd y ejecute el siguiente comando para la instalación global de Cordova.
+
+	npm install -g cordova
+
+	Nota: Permitira ocupar comandos de cordoba de manera en cualquier directorio.
+
 Creación de la aplicación.
 
 Cree la carpeta APPIONICANGULARREDUXFIREBASEDBCONTACTOS, luego en un cmd vaya a esta carpeta y ejecute el siguiente comando para
@@ -14,7 +26,106 @@ crear un proyecto vacio.
 	Nota: appionicangularreduxfirebasedbcontactos es el nombre del proyecto y con --type se especifica el framework js con el que trabajara,
 	al momento se ofrecen angular y react
 
+Agregar Cordova a la aplicación.
+
+Vaya a la raiz de la aplicación y ejecute el siguiente comando para agregar Cordova:
+
+	npm install -d cordova
+	Nota: O puede ejecutar el comando ionic integrations enable cordova.
+
+Revisar la versión instalada de Cordova:
+
+	Cordova -v
+
+Configuración de las plataformas.
+
+Vaya a la raiz de la aplicación y ejecute los siguientes comandos:
+
+	ionic cordova platform add ios
+
+	ionic cordova platform add android
+
+Instalación de librerias.
+
+Abra un cmd y vaya a la raiz de la aplicación para ejecutar el siguiente comando:
+
+	npm i redux @angular-redux/store flux-standard-action redux-logger --save
+
+Enseguida ejecute el siguiente comando, le permitira ejecutar la aplicación de forma nativa.
+
+	npm install -g native-run
+
+***************************************************************************
+Para actualizar las librerias de la aplicación a la versión más reciente puede ejecutar el siguiente comando de angular:
+
+	ng update
+
+**************************************************************************
+Revisar todas las librerias de ionic instaladas:
+
+	ionic info
+
+Ejecutar la aplicación.
+
+En un cmd vaya a la raiz de la aplicación y ejecute el siguiente comando:
+
+	ionic serve --lab
+
+	Nota: La url http://localhost:8100/ es la del navegador y la url http://localhost:8200/ es la movil, quitando --lab se despliega solo
+	en el Navegador
+
+Instalar la aplicación en un celular conectado a la laptop.
+
+****************************************************************************
+Debe tener instalado el adb para poder sincronizar el celular y la laptop, se proporciona añadiendo Google USB Driver en Android Studio.
+
+Si no cuenta con estas herramientas ejecute los siguientes pasos
 
 
+Instalación de Android Studio.
 
+Vaya a la sección Android Studio downloads de la url https://developer.android.com/studio#Other para descargar el ejecutable de Android Studio.
+
+Dar doble clic sobre el ejecutable y de preferencía elija la opción personalizada para seleccionar Android Studio y Android Virtual Device.
+
+Instalación del SDK tools de Android.
+
+El SDK ya viene por defecto en Android Studio, pero puede descargar las herramientas basicas de línea de comandos.
+
+Vaya a la sección Command line tools only de la url https://developer.android.com/studio#Other para descargar el ejecutable de Android Studio.
+
+Configurar Android Studio e instalar Google USB Driver.
+
+Para poder instalar y desplegar aplicaciones en el celular desde un cmd ejecutando los comandos de adb, debe habilitar la opción Google USN Driver
+de la siguiente manera:
+
+	* Abrir Android Studio, luego dar clic en el menú Tool y en SDK Manager.
+	* Dar clic en la pestaña SDK Tools y seleccione en la lista la opción Google USB Driver
+
+Configuración de variables de entorno de adb.
+
+Abra la ventana Editar varibles de entorno del sistema, luego pulse en el botón Variables de entorno y en las variable Path del Sistema y 
+del usuario agregue la ruta donde se encuentra el adb instalado es parecida a C:\Users\suUsuario\AppData\Local\Android\Sdk\platform-tools,
+esto le permitira ejecutar los comando adb desde cualquier directorio. 
+
+Configurar celular android.
+
+Ir a Ajustes, luego a la pestaña General, despúes pulse la opción Acerca del telefono, enseguida pulse en Información del Software
+y por último pulse 7 veces en Número de compilación para que en la pantalla anterior se visualice las Opciones del 
+desarrollador y pueda habilitar la Depuración de USB.
+
+Conecte el celular a la Laptop con un cable USB, luego pulse en la opción dispositivo MIDI y después en Ok para permitir la depuración USB.
+
+****************************************************************************
+
+Abra un cmd y vaya a la raiz del proyecto, luego ejecute el siguiente comando para verificar que su celular esta conectado.
+
+	adb devices
+
+Ejecute el siguiente comando para realizar la instalación:
+
+	ionic cordova run android --prod
+
+	Nota:Para realizar la instalación en ios solo remplace android por ios, al terminar de ejecutarse el comando se desplegara automaticamente 
+	la aplicación en el celular
 

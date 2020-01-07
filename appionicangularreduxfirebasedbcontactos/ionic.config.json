@@ -1,5 +1,7 @@
 {
   "name": "appionicangularreduxfirebasedbcontactos",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
