@@ -1,3 +1,15 @@
+
+La aplicación que se creara estara hecha con las siguientes tecnologías:
+
+Ionic: Framework js ui para diseñar las vistas
+Angular: Framework js para el backend
+Redux: Librería js para el manejo eficiente de los estados de la aplicación.
+AWS amplify y AWS movil hub: Para la creación y autenticación de usuarios y el almacenamiento de los contactos en la nube AWS.
+Cordova: Librerá js que hace que el aplicativo sea compatible en Android y IOS, en otras palabras solo nos tenemos que ocupar de hacer un solo
+	código y Cordova nos ayuda a que funcione en estas tecnologías.
+
+Recordar que Android esta hecho en Java y IOS en C.
+
 Instalación de Ionic.
 
 Abra un cmd y ejecute el siguiente comando para la instalación de Ionic de manera global:
