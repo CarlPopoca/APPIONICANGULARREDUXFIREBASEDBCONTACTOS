@@ -55,6 +55,10 @@ Enseguida ejecute el siguiente comando, le permitira ejecutar la aplicación de 
 
 	npm install -g native-run
 
+Instale las librerias de Firebase ejecutando los siguientes comandos:
+
+	npm install firebase angular-firebase --save
+
 ***************************************************************************
 Para actualizar las librerias de la aplicación a la versión más reciente puede ejecutar el siguiente comando de angular:
 
@@ -74,9 +78,81 @@ En un cmd vaya a la raiz de la aplicación y ejecute el siguiente comando:
 	Nota: La url http://localhost:8100/ es la del navegador y la url http://localhost:8200/ es la movil, quitando --lab se despliega solo
 	en el Navegador
 
-Instalar la aplicación en un celular conectado a la laptop.
+
+Registrar App movil.
+
+Realiza los siguientes pasos para agregar Firebase a la aplicación.
+
+	* Ingresa a Firebase https://firebase.google.com/ y dar clic en ir a la consola
+	* Si no tiene un proyecto creado realice lo siguiente:
+		1.- Pulse en agregar Proyecto y ingrese el nombre
+		2.- Deje habilitado Google  Analytics para el proyecto y pulse siguiente
+		3.- Seleccione la cuenta por default de Firebase y pulse el botón crear proyecto.
+	* Una vez creado el proyecto  ingrese en él y pulse en el botón android y realice los siguientes pasos:
+		1.- Capture el nombre del paquete Android, se recomienda la nomclatura com.nombrecompañia.nombreapp
+		2.- Capture un nombre más descriptivo de la aplicación, es opcional
+		3.- Pulse el botón Registrar App.
+
+Agregar Firebase a la App movil.
+
+Enseguida de haber registrado la App le aparecen los pasos a seguir para agregar Firebase a la App, continuaremos descargando el archivo json de configuración
+y poniendolo en la raiz de la aplicación, también agreguelo dentro de la carpeta platforms de Andriod.
+
+Luego agregaremos el SDK de Firebase abriendo el archivo build.gradle que se ubica dentro de la carpeta platforms de Android y modifique la propiedad classpath
+de dependencias por 'com.android.tools.build:gradle:3.3.0', quedara esa parte del código de la siguiente manera:
+
+	buildscript {
+  	   repositories {
+    	      google()  // Google's Maven repository
+    	      jcenter()
+  	   }
+  	   dependencies {
+             classpath 'com.google.gms:google-services:4.3.2'
+          }
+	}
+
+	allprojects {
+    	   repositories {
+              google()
+              jcenter()
+    	   }
+
+    //This replaces project.properties w.r.t. build settings
+    	   project.ext {
+      	      defaultBuildToolsVersion="28.0.3" //String
+              defaultMinSdkVersion=19 //Integer - Minimum requirement is Android 4.4
+              defaultTargetSdkVersion=28 //Integer - We ALWAYS target the latest by default
+              defaultCompileSdkVersion=28 //Integer - We ALWAYS compile with the latest by default
+           }
+	}
+
+	task clean(type: Delete) {
+    	   delete rootProject.buildDir
+	}
+Después abra el archivo build.gradle que se ubica dentro de la carpeta App de Platforms de Android y agregue la siguiente línea:
+
+	apply plugin: 'com.google.gms.google-services'
+
+Y también agregue la siguiente linea en dependencías:
+
+	implementation 'com.google.firebase:firebase-analytics:17.2.0'
+
+Las lineas modificadas quedaran de la siguiente manera:
+
+	apply plugin: 'com.android.application'
+	// Se agrega el plugin 
+	apply plugin: 'com.google.gms.google-services'
+
+	dependencies {
+	  // Agrega el Firebase SDK de Google Analytics
+	  implementation 'com.google.firebase:firebase-analytics:17.2.0'
+
+	}
 
 ****************************************************************************
+
+Instalar la aplicación en un celular conectado a la laptop.
+
 Debe tener instalado el adb para poder sincronizar el celular y la laptop, se proporciona añadiendo Google USB Driver en Android Studio.
 
 Si no cuenta con estas herramientas ejecute los siguientes pasos
@@ -128,4 +204,3 @@ Ejecute el siguiente comando para realizar la instalación:
 
 	Nota:Para realizar la instalación en ios solo remplace android por ios, al terminar de ejecutarse el comando se desplegara automaticamente 
 	la aplicación en el celular
-
