@@ -4,38 +4,38 @@ import { NgRedux } from '@angular-redux/store';
 import { User } from '../shared/model/user';
 import {  } from '../shared/utils/constants';
 import * as firebase from "firebase/app";
-import {MESSAGE_ERROR_SAVE, MESSAGE_ERROR_LOGIN, MESSAGE_ERROR_LOGOUT} from '../shared/utils/constants';
+import {MESSAGE_ERROR_SIGNUP, MESSAGE_ERROR_SIGNIN, MESSAGE_ERROR_SIGNOUT} from '../shared/utils/constants';
 
 @Injectable() 
 export class UsersActions {
-  static LOGIN_USER = 'LOGIN_USER';
-  static LOGOUT_USER = 'LOGOUT_USER';
-  static ERROR_LOGIN = 'ERROR_LOGIN';
-  static ERROR_LOGOUT = 'ERROR_LOGOUT';
-  static ADD_USER = 'ADD_USER';
-  static ERROR_USER = 'ERROR_USER';
+  static SIGNIN = 'SIGNIN';
+  static SIGNOUT = 'SIGNOUT';
+  static ERROR_SIGNIN = 'ERROR_SIGNIN';
+  static ERROR_SIGNOUT = 'ERROR_SIGNOUT';
+  static SIGNUP = 'SIGNUP';
+  static ERROR_SIGNUP = 'ERROR_SIGNUP';
 
   constructor(private ngRedux: NgRedux<IAppState>) {
 
   }
 
-  login(credentials)
+  signIn (credentials)
   {
     firebase
     .auth()
     .signInWithEmailAndPassword(credentials.email, credentials.password)
     .then(data => {
       this.ngRedux.dispatch({
-        type: UsersActions.LOGIN_USER,
+        type: UsersActions.SIGNIN,
         payload: {
           data
         }
     }); 
     })
     .catch(error => {
-      var vError = MESSAGE_ERROR_LOGIN + error;
+      var vError = MESSAGE_ERROR_SIGNIN+ error;
       this.ngRedux.dispatch({
-          type: UsersActions.ERROR_LOGIN,
+          type: UsersActions.ERROR_SIGNIN,
           payload: {
               vError
           }
@@ -43,23 +43,23 @@ export class UsersActions {
     });
   }
 
-  logout(){
+  signOut (){
     firebase
     .auth()
     .signOut()
     .then(data => {
 
       this.ngRedux.dispatch({
-        type: UsersActions.LOGOUT_USER,
+        type: UsersActions.SIGNOUT,
         payload: {
           data
         }
       });
     })
     .catch(error => {
-      var vError = MESSAGE_ERROR_LOGOUT + error;
+      var vError = MESSAGE_ERROR_SIGNOUT + error;
       this.ngRedux.dispatch({
-          type: UsersActions.ERROR_LOGOUT,
+          type: UsersActions.ERROR_SIGNOUT,
           payload: {
               vError
           }
@@ -67,7 +67,7 @@ export class UsersActions {
     });
   }
   
-  addUser(newUser){
+  signUp (newUser){
 
     firebase
     .auth()
@@ -88,26 +88,28 @@ export class UsersActions {
             lastName: newUser.lastName
         }
         this.ngRedux.dispatch({
-          type: UsersActions.ADD_USER,
+          type: UsersActions.SIGNUP,
           payload: {
             usuario
           }
         });
       })
       .catch(error => {
+        var vError = MESSAGE_ERROR_SIGNUP+ error;
         this.ngRedux.dispatch({
-          type: UsersActions.ERROR_USER,
+          type: UsersActions.ERROR_SIGNUP,
           payload: {
-            error
+            vError
           }
         });
       });
     })
     .catch(error => {
+      var vError = MESSAGE_ERROR_SIGNUP+ error;
       this.ngRedux.dispatch({
-        type: UsersActions.ERROR_USER,
+        type: UsersActions.ERROR_SIGNUP,
         payload: {
-          error
+          vError
         }
       });
     });
