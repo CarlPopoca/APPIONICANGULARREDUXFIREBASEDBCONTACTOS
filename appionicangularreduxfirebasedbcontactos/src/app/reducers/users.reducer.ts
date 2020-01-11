@@ -1,11 +1,10 @@
 import { UsersActions } from '../actions/users.actions';
-import { Users } from '../shared/model/user';
 
 const INITIAL_STATE = {
   error: null
 };
 
-const UsersReducer = (state = INITIAL_STATE, action) => {
+export const UsersReducer = (state = INITIAL_STATE, action : any) : any => {
   switch(action.type){
     case UsersActions.SIGNIN:
         return {
@@ -37,5 +36,3 @@ const UsersReducer = (state = INITIAL_STATE, action) => {
     default: return state;
   }
 }
-
-export default UsersReducer;

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IAppState } from '../app.state';
 import { NgRedux } from '@angular-redux/store';
-import { User } from '../shared/model/user';
 import {  } from '../shared/utils/constants';
 import * as firebase from "firebase/app";
 import {MESSAGE_ERROR_SIGNUP, MESSAGE_ERROR_SIGNIN, MESSAGE_ERROR_SIGNOUT} from '../shared/utils/constants';

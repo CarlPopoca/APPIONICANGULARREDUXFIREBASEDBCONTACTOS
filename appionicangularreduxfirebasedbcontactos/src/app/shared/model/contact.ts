@@ -1,6 +1,6 @@
 export interface Contacts {
-    active: Contact;
-    list: Contact[];
+    contacts: Contact[];
+    error: string;
   }
   
 export interface Contact {

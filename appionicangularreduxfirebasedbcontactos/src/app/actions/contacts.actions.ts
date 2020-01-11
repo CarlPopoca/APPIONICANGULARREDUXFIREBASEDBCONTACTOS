@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IAppState } from '../app.state';
 import { NgRedux } from '@angular-redux/store';
-import { Contacts } from '../shared/model/contact';
 import * as firebase from "firebase/app";
 import { MESSAGE_ERROR_GET_INFO, MESSAGE_ERROR_SAVE, MESSAGE_ERROR_UPDATE, MESSAGE_ERROR_DELETE } from '../shared/utils/constants';
 //import { Http } from '@angular/http';
@@ -28,7 +27,7 @@ export class ContactsActions{
             this.ngRedux.dispatch({
                 type: ContactsActions.GET_CONTACTS,
                 payload: {
-                    snapshot
+                    contacts: snapshot
                 }
             });    
         })
@@ -37,7 +36,7 @@ export class ContactsActions{
             this.ngRedux.dispatch({
                 type:ContactsActions.ERROR_CONTACTS,
                 payload: {
-                    vError
+                    error: vError
                 }
             });
         });
@@ -63,7 +62,7 @@ export class ContactsActions{
             this.ngRedux.dispatch({
                 type: ContactsActions.ADD_CONTACTS,
                 payload: {
-                    dato
+                    contact: dato
                 }
             }); 
         })
@@ -72,7 +71,7 @@ export class ContactsActions{
             this.ngRedux.dispatch({
                 type:ContactsActions.ERROR_CONTACTS,
                 payload: {
-                    vError
+                   error: vError
                 }
             });
         });
@@ -89,7 +88,7 @@ export class ContactsActions{
             this.ngRedux.dispatch({
                 type: ContactsActions.UPDATE_CONTACTS,
                 payload: {
-                    data
+                    contact: data
                 }
             }); 
         })
@@ -98,7 +97,7 @@ export class ContactsActions{
             this.ngRedux.dispatch({
                 type:ContactsActions.ERROR_CONTACTS,
                 payload: {
-                    vError
+                    error: vError
                 }
             });
         });
@@ -124,7 +123,7 @@ export class ContactsActions{
             this.ngRedux.dispatch({
                 type:ContactsActions.ERROR_CONTACTS,
                 payload: {
-                    vError
+                    error: vError
                 }
             });
         });

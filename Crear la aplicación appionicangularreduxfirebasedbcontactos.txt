@@ -49,7 +49,7 @@ Instalación de librerias.
 
 Abra un cmd y vaya a la raiz de la aplicación para ejecutar el siguiente comando:
 
-	npm i redux @angular-redux/store @angular/router flux-standard-action redux-logger --save
+	npm i redux redux-devtools-extension @angular-redux/store @angular/router flux-standard-action redux-logger --save
 
 Enseguida ejecute el siguiente comando, le permitira ejecutar la aplicación de forma nativa.
 
