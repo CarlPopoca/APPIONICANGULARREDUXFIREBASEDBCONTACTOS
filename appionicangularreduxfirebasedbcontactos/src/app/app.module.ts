@@ -11,18 +11,20 @@ import { UsersActions } from './actions/users.actions';
 import { ContactsActions } from './actions/contacts.actions';
 import { rootReducer } from './app.rootReducer';
 import { IAppState } from './app.state';
-import { SignInComponent } from './components/security/sign-in/sign-in.component';
-import { SignOutComponent } from './components/security/sign-out/sign-out.component';
-import { SignUpComponent } from './components/security/sign-up/sign-up.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
+import { LogoutComponent } from './components/security/logout/logout.component';
+import { LoginComponent } from './components/security/login/login.component';
+import { HomePage } from './home/home.page';
+import { AddUserComponent } from './components/security/add-user/add-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignInComponent,
-    SignOutComponent,
-    SignUpComponent,
-    ContactsComponent
+    HomePage,
+    ContactsComponent,
+    LoginComponent,
+    LogoutComponent,
+    AddUserComponent
   ],
   entryComponents: [],
   imports: [NgReduxModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule],
